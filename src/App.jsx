@@ -1,70 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-//import './App.css'
+import { useState, useEffect } from 'react'
+import "./App.css";
 import ListaItems from './components/ListaItems/ListaItems.jsx'
 import FormularioItem from './components/FormularioItem/FormularioItem.jsx'
-
-const peliculasEjemplo = [
-  {
-    "id": 1,
-    "titulo": "El Padrino",
-    "director": "Francis Ford Coppola",
-    "anio": 1972,
-    "genero": "Drama",
-    "rating": 9.2,
-    "tipo": "Película",
-    "visto": true
-  },
-  {
-    "id": 2,
-    "titulo": "Breaking Bad",
-    "director": "Vince Gilligan",
-    "anio": 2008,
-    "genero": "Crimen",
-    "rating": 9.5,
-    "tipo": "Serie",
-    "visto": true
-  },
-  {
-    "id": 3,
-    "titulo": "Interstellar",
-    "director": "Christopher Nolan",
-    "anio": 2014,
-    "genero": "Ciencia ficción",
-    "rating": 8.6,
-    "tipo": "Película",
-    "visto": false
-  },
-  {
-    "id": 4,
-    "titulo": "Stranger Things",
-    "director": "Los Hermanos Duffer",
-    "anio": 2016,
-    "genero": "Fantasía",
-    "rating": 8.7,
-    "tipo": "Serie",
-    "visto": false
-  },
-  {
-    "id": 5,
-    "titulo": "La La Land",
-    "director": "Damien Chazelle",
-    "anio": 2016,
-    "genero": "Musical",
-    "rating": 8.0,
-    "tipo": "Película",
-    "visto": true
-  }
-];
-
+import peli from "./peiculas.json"
 
 function App() {
+  const [peliculas, setPeliculas] = useState(() => {
+    const peliculasGuardadas = JSON.parse(localStorage.getItem("peliculas"));
+    return peliculasGuardadas || peli;
+  });
+  
+  useEffect(() => {
+    localStorage.setItem("peliculas", JSON.stringify(peliculas));
+  }, [peliculas]);
 
-  const [peliculas, setPeliculas] = useState(peliculasEjemplo);
-
-  const peliculasVistas = peliculas.filter(pelicula => pelicula.visto);
-  const peliculasNoVistas = peliculas.filter(pelicula => !pelicula.visto);
+  const [peliculasVistas, setPeliculasVistas] = useState(peliculas.filter(pelicula => pelicula.visto));
+  const [peliculasNoVistas, setPeliculasNoVistas] = useState(peliculas.filter(pelicula => !pelicula.visto));  
+  //const peliculasVistas = peliculas.filter(pelicula => pelicula.visto);
+  //const peliculasNoVistas = peliculas.filter(pelicula => !pelicula.visto);
 
   const totalVistas = peliculasVistas.length;
   const totalNoVistas = peliculasNoVistas.length;
@@ -72,12 +25,57 @@ function App() {
   const [itemActual, setItemActual] = useState({
     titulo: "",
     director: "",
-    anio: "",
+    anio: 0,
     genero: "",
-    rating: "",
+    rating: 0,
     tipo: "",
     visto: false,
   });
+  //********************** alfredo******************************
+    
+    const[peliculasFiltradas,setPeliculasFiltradas]=useState(peliculas);
+
+    const handleFiltrar = (criterios) => {
+      const peliculasFiltradas = peliculas.filter((pelicula) => {
+        return (
+          (!criterios.titulo || pelicula.titulo.toLowerCase().includes(criterios.titulo.toLowerCase())) &&
+          (!criterios.director || pelicula.director.toLowerCase().includes(criterios.director.toLowerCase())) &&
+          (!criterios.anio || pelicula.anio === parseInt(criterios.anio)) &&
+          (!criterios.genero || pelicula.genero === criterios.genero) &&
+          (!criterios.tipo || pelicula.tipo === criterios.tipo) &&
+          (!criterios.rating || pelicula.rating >= parseInt(criterios.rating))
+        );
+      });
+      const vistas = peliculasFiltradas.filter(pelicula=>pelicula.visto)
+      setPeliculasVistas(vistas);
+      const noVistas =peliculasFiltradas.filter(pelicula=>!pelicula.visto)
+      setPeliculasNoVistas(noVistas)
+      console.log(peliculasFiltradas);
+      setPeliculasFiltradas(peliculasFiltradas); 
+    };
+    const handleOrdenar =(orden) =>{
+      const peliculasOrdenadas=[...peliculasFiltradas];
+      if(orden === "Reciente" ){
+        peliculasOrdenadas.sort((a,b)=>b.anio - a.anio)
+      }
+      else if(orden === "Antiguas" ){
+        peliculasOrdenadas.sort((a,b)=>a.anio - b.anio)
+      }
+      else if(orden === "MayorR" ){
+        peliculasOrdenadas.sort((a, b) => b.rating - a.rating);
+      }
+      else if(orden === "MenorR" ){
+        peliculasOrdenadas.sort((a, b) => a.rating - b.rating);
+      }
+      const vistas = peliculasOrdenadas.filter(pelicula=>pelicula.visto);
+      const noVistas =peliculasOrdenadas.filter(pelicula=>!pelicula.visto);
+      setPeliculasVistas(vistas);
+      setPeliculasNoVistas(noVistas);
+      console.log(peliculasOrdenadas);
+    }
+
+
+  //********************** alfredo******************************
   
   const [modoEdicion, setModoEdicion] = useState(false);
   const [idEdicion, setIdEdicion] = useState(null);
@@ -111,9 +109,9 @@ function App() {
     setItemActual({
       titulo: "",
       director: "",
-      anio: "",
+      anio: 0,
       genero: "",
-      rating: "",
+      rating: 0,
       tipo: "",
       visto: false,
     });
@@ -125,11 +123,18 @@ function App() {
     <>
       <div>
         <h1>{modoEdicion ? "Editar película o serie" : "Agregar nueva película o serie"}</h1>
-        <FormularioItem item={itemActual} onChange={setItemActual} onSubmit={handleGuardar} />
-        <ListaItems coleccionPeliculas={peliculasVistas} onEditar={handleEditar} onEliminar={handleEliminar} titulo={"Películas y series vistas"}/>
-        <p><strong>Cantidad de pelílucas y series vistas: </strong>{totalVistas}</p>
-        <ListaItems coleccionPeliculas={peliculasNoVistas} onEditar={handleEditar} onEliminar={handleEliminar} titulo={"Películas y series por ver"}/>
-        <p><strong>Cantidad de películas y series por ver: </strong>{totalNoVistas}</p>
+        <FormularioItem item={itemActual} onChange={setItemActual} onSubmit={handleGuardar} onFiltrar={handleFiltrar} onOrdenar={handleOrdenar}/>
+        
+        <div className='mostadorPeliculas'>
+          <div className='vistas'>
+              <p><strong>Cantidad de pelílucas y series vistas: </strong>{totalVistas}</p>
+              <ListaItems coleccionPeliculas={peliculasVistas} onEditar={handleEditar} onEliminar={handleEliminar} titulo={"Películas y series vistas"}/>
+          </div>
+          <div className='noVistas'>
+              <p><strong>Cantidad de películas y series por ver: </strong>{totalNoVistas}</p>
+              <ListaItems coleccionPeliculas={peliculasNoVistas} onEditar={handleEditar} onEliminar={handleEliminar} titulo={"Películas y series por ver"}/>
+          </div>
+        </div>
       </div>
     </>
   )

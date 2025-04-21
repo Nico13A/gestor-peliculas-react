@@ -1,3 +1,4 @@
+import "./input.css";
 const Input = ({ value, onChange, name, type = "text", placeholder, ...props }) => {
   return (
     <input
