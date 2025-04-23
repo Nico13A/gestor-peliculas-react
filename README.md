@@ -1,37 +1,76 @@
-Programación Web Avanzada 2025
-Trabajo Practico N°1 
+# 🎬 Programación Web Avanzada 2025  
+## Trabajo Práctico N.º 1
 
-integrantes: -Nicolas Antinao FAI - 4353
-             -Alfredo Payllalef Fai 3694
+---
 
-Objetivo: desarrollar un gestor de series y peliculas que contenga los detalles 
-mensionados en las consignas
+## 👥 Integrantes
 
-Detalles de los archivos:
- -index.js: 
-            es el punto principal del la aplicacion React. Sirve para montar el componente
-            raiz (app) en el Dom del navegador para luego ser mostrado en la pagina web.
- -App.jsx: 
-            es el contenedor del componente raiz de la aplicacion. Es donde se define la
-            la logica principal y la estructura de react
- -index.css:
-            es el que contiene los estilos globales de la aplicacion.
- -Packaje.json:
-            es el archivo que contiene toda la informacion del proyecto y gestiona las 
-            dependecias del mismo
+- **Nicolás Antinao** – FAI-4353  
+- **Alfredo Payllalef** – FAI-3694
 
-Guia de instalacion:
- para clonar el repositorio sigue estos pasos:
-    **Clonar el repositorio**
-   ```bash
-   git clone https://github.com/Nico13A/gestor-peliculas-react
-   cd gestor-peliculas-react
-   instalar la dependencia de vite
-   correr npm run dev
-Guia de uso
-El sismtema va a mostrar por pantalla un formulario en el que se podra: 
-    1) Agregar una pelicula 
-    2) editar una pelicula
-    3) Filtrar de acuerdo a los parametros que se encuentran en el fomulario.
+---
 
-el sistema desplegara dos listas donde se muestran del lado derecho las vistas y del lado izquierdo las no vistas. En cada una de las listas se vera los titulos de las peliculas almacenadas y apareceran dos botones donde se permitira editar los datos de la pelicula y eliminar las peliculas. 
+## 🎯 Objetivo
+
+Desarrollar un **gestor de series y películas** que contenga los detalles mencionados en las consignas del trabajo práctico.
+
+---
+
+## 📁 Detalles de los Archivos
+
+- **`main.jsx`**  
+  Es el punto principal de la aplicación React. Se encarga de montar el componente raíz (`App`) en el DOM del navegador para luego ser mostrado en la página web.
+
+- **`App.jsx`**  
+  Es el contenedor del componente raíz de la aplicación. Define la lógica principal y la estructura general de React.
+
+- **`index.css`**  
+  Contiene los estilos globales de la aplicación.
+
+- **`package.json`**  
+  Archivo que contiene la información del proyecto y gestiona las dependencias del mismo.
+
+---
+
+## ⚙️ Guía de Instalación
+
+Para clonar y ejecutar el proyecto localmente:
+
+1. Clonar el repositorio:
+    ```bash
+    git clone https://github.com/Nico13A/gestor-peliculas-react
+    cd gestor-peliculas-react
+    ```
+
+2. Instalar las dependencias:
+    ```bash
+    npm install
+    ```
+
+3. Correr el servidor de desarrollo con Vite:
+    ```bash
+    npm run dev
+    ```
+
+---
+
+## 🧾 Guía de Uso
+
+El sistema mostrará por pantalla un formulario en el que se podrá:  
+1. Agregar una película  
+2. Editar una película  
+3. Filtrar de acuerdo a los parámetros que se encuentran en el formulario
+
+El sistema desplegará **dos listas**:
+
+- **Del lado derecho**: películas *no vistas*  
+- **Del lado izquierdo**: películas *vistas*
+
+En cada lista se mostrarán los títulos de las películas almacenadas y aparecerán dos botones para cada una de ellas, que permitirán:
+
+- **Editar**: Modificar los datos de la película  
+- **Eliminar**: Borrar la película del sistema
+
+---
+
+> 🧠 Proyecto realizado como parte del curso **Programación Web Avanzada 2025**
