@@ -20,38 +20,3 @@ body {
   margin: 0 auto;
   padding: 1rem;
 }
-
-.subtituloPrincipal {
-  color: var(--azul-principal);
-  margin: 0 auto 4px;
-  max-width: 860px;
-}
-
-.mostradorPeliculas {
-  max-width: 1000px;
-  width: 100%;
-  margin: 40px auto;
-  display: flex;
-  justify-content: space-between;
-}
-
-.vistas, .noVistas {
-  background-color: var(--azul-oscuro);
-  color: var(--blanco);
-  width: 45%;
-  border-radius: 4px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.contador {
-  margin: 0;
-  font-size: 14px;
-  color: var(--blanco);
-}
-
-.contador strong {
-  color: #3aa57c;
-}
