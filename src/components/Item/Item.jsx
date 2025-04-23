@@ -1,11 +1,11 @@
 import Boton from "../Boton/Boton";
-import "./Item.css";
+import styles from "./Item.module.css";
 
 const Item = ({ item, onEditar, onEliminar }) => {
   return (
-    <div className="cardPelicula">
-      <div className="nombrePelicula">
-        <h2>{item.titulo}</h2>
+    <div className={styles.card}>
+      <div className={styles.cardContent}>
+        <p>{item.titulo}</p>
         {/*<p><strong>Director:</strong> {item.director}</p>
         <p><strong>Año:</strong> {item.anio}</p>
         <p><strong>Género:</strong> {item.genero}</p>
@@ -13,7 +13,7 @@ const Item = ({ item, onEditar, onEliminar }) => {
         <p><strong>Tipo:</strong> {item.tipo}</p>
         */}
       </div>
-      <div className="botones">
+      <div className={styles.cardActions}>
         <Boton texto="Editar" onClick={() => onEditar(item.id)} />
         <Boton texto="Eliminar" onClick={() => onEliminar(item.id)} />
       </div>

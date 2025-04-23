@@ -1,0 +1,6 @@
+.titulo {
+    font-size: 32px; 
+    color: var(--azul-oscuro); 
+    text-align: center; 
+    letter-spacing: 1px; 
+}

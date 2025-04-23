@@ -1,0 +1,25 @@
+.boton {
+    background-color: #26745a;
+    color: var(--blanco);
+    font-weight: 500;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80px;
+}
+  
+.boton:hover {
+    background-color: #2e8d6c;
+}
+  
+.botonEliminar {
+    background-color: #b20000;
+}
+  
+.botonEliminar:hover {
+    background-color: #fd292f;
+}
+  

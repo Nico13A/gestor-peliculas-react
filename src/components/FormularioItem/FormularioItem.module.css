@@ -1,0 +1,117 @@
+.formulario {
+  background-color: var(--blanco);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  min-height: 100px;
+  max-height: 200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+}
+
+label {
+  color: var(--negro-azulado);
+}
+
+.leyenda {
+  text-align: center;
+}
+
+.leyenda > label {
+  color: #555;
+  font-weight: 300;
+}
+
+.formularioContenido {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.anio input, .rating input {
+  width: 60px;
+}
+
+.tipo select, .genero select, .ordenar select {
+  width: 194px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 0.5px solid var(--azul-activo);
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.548);
+  background-color: white;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tipo select:focus, .genero select:focus, .ordenar select:focus {
+  outline: none;
+  border-color: var(--azul-principal);
+  box-shadow: 0 0 0 1px var(--azul-principal);
+}
+
+.visto {
+  width: 386px;
+  font-size: 14px;
+  color: var(--azul-principal);
+  font-weight: 700;
+}
+
+/* Botones */
+.botonera {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.botones {
+  background-color: var(--azul-principal);
+  border: none;
+  padding: 6.5px 10px;
+  border-radius: 4px;
+  color: var(--blanco);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.botones:hover {
+  background-color: var(--azul-activo);
+}
+
+.botones:active {
+  background-color: var(--azul-hover);
+}
+
+.filtrar {
+  background-color: #3aa57c;
+}
+
+.filtrar:hover {
+  background-color: #2e8d6c;
+}
+
+.filtrar:active {
+  background-color: #26745a;
+}
+
+.limpiar {
+  background-color: #555;
+}
+
+.limpiar:hover {
+  background-color: #444;
+}
+
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+}
+

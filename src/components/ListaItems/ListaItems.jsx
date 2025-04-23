@@ -1,14 +1,14 @@
 import Item from "../Item/Item";
+import styles from "./ListaItems.module.css";
 
 const ListaItems = ({ coleccionPeliculas, onEditar, onEliminar, titulo }) => {
   return (
-    <div className="container">
-      <h2>{titulo}</h2>
-
+    <>
+      <h2 className={styles.tituloLista}>{titulo}</h2>
       {coleccionPeliculas.length === 0 ? (
-        <p>No hay elementos en la lista.</p>
+        <p className={styles.tituloVacio}>No hay elementos en la lista.</p>
       ) : (
-        <ul className="listaPeliculas">
+        <ul className={styles.listaPeliculas}>
           {coleccionPeliculas.map((pelicula) => (
             <li key={pelicula.id}>
               <Item
@@ -20,7 +20,7 @@ const ListaItems = ({ coleccionPeliculas, onEditar, onEliminar, titulo }) => {
           ))}
         </ul>
       )}
-    </div>
+    </>
   );
 };
 

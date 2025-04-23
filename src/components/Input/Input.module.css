@@ -1,0 +1,19 @@
+.input {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 0.5px solid var(--azul-activo);
+  border-radius: 4px;
+  color: var(--texto);
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input::placeholder {
+  color: #555;
+  opacity: 0.8;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--azul-principal);
+  box-shadow: 0 0 0 1px var(--azul-principal);
+}

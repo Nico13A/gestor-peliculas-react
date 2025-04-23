@@ -1,33 +1,43 @@
 import Input from "../Input/Input";
-import "./FormularioItem.css"
+import styles from "./FormularioItem.module.css";
 
-const generos = ["Acción", "Comedia", "Drama", "Terror", "Ciencia Ficción","Musical"];
+const generos = [
+    "Drama",
+    "Crimen",
+    "Ciencia ficción",
+    "Fantasía",
+    "Musical",
+    "Acción",
+    "Comedia",
+    "Romance",
+    "Western",
+    "Terror"
+]
 const tipos = ["Película", "Serie"];
 
-const FormularioItem = ({ item, onChange, onSubmit,onFiltrar,onOrdenar }) => {
-    
+const FormularioItem = ({ item, onChange, onSubmit, onFiltrar, onOrdenar, onLimpiar }) => {
+
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         onChange((prevItem) => ({
-          ...prevItem,  
-          [name]: type === "checkbox" ? checked : value,  
+            ...prevItem,
+            [name]: type === "checkbox" ? checked : value,
         }));
-      };
-      
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit();
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="form">
-                <div className="leyenda">
-                    <label>Para Guardar llene todos los campos /</label>
-                    <label>/ Para filtrar llene alguno de los campos</label>
-                </div>
-                <div className="titulo">
-                    <label>Titulo</label>
+        <form onSubmit={handleSubmit} className={styles.formulario}>
+            <div className={styles.leyenda}>
+                <label>Para guardar llene todos los campos /</label>
+                <label>/ Para filtrar llene alguno de los campos</label>
+            </div>
+            <div className={styles.formularioContenido}>
+                <div>
                     <Input
                         name="titulo"
                         value={item.titulo}
@@ -35,8 +45,7 @@ const FormularioItem = ({ item, onChange, onSubmit,onFiltrar,onOrdenar }) => {
                         placeholder="Título"
                     />
                 </div>
-                <div className="director">
-                    <label>Director</label>
+                <div>
                     <Input
                         name="director"
                         value={item.director}
@@ -44,8 +53,7 @@ const FormularioItem = ({ item, onChange, onSubmit,onFiltrar,onOrdenar }) => {
                         placeholder="Director"
                     />
                 </div>
-                <div className="anio">
-                    <label>Año</label>
+                <div className={styles.anio}>
                     <Input
                         type="number"
                         name="anio"
@@ -54,17 +62,15 @@ const FormularioItem = ({ item, onChange, onSubmit,onFiltrar,onOrdenar }) => {
                         placeholder="Año"
                     />
                 </div>
-                <div className="genero">
-                    <label>Genero</label>
+                <div className={styles.genero}>
                     <select name="genero" value={item.genero} onChange={handleChange} required>
                         <option value="">Selecciona un género</option>
                         {generos.map((g) => (
-                        <option key={g} value={g}>{g}</option>
+                            <option key={g} value={g}>{g}</option>
                         ))}
                     </select>
                 </div>
-                <div className="rating">
-                    <label>Rating</label>
+                <div>
                     <Input
                         type="number"
                         step="0.1"
@@ -76,38 +82,38 @@ const FormularioItem = ({ item, onChange, onSubmit,onFiltrar,onOrdenar }) => {
                         placeholder="Rating"
                     />
                 </div>
-                <div className="tipo">
-                    <label>Tipo</label>
+                <div className={styles.tipo}>
                     <select name="tipo" value={item.tipo} onChange={handleChange} required>
                         <option value="">Selecciona un tipo</option>
                         {tipos.map((t) => (
-                        <option key={t} value={t}>{t}</option>
+                            <option key={t} value={t}>{t}</option>
                         ))}
                     </select>
                 </div>
-                <div className="visto">
-                    <label htmlFor="visto">
-                        <input
-                        type="checkbox"
-                        name="visto"
-                        checked={item.visto}
-                        onChange={handleChange}
-                        />
-                        Visto
-                    </label>
-                </div>
-                <div className="ordenar">
+                <div className={styles.ordenar}>
                     <select onChange={(e) => onOrdenar(e.target.value)}>
-                        <option value="">ordenar por:</option>
+                        <option value="">Ordenar por:</option>
                         <option value="Reciente" >Recientes</option>
                         <option value="Antiguas">Antiguas</option>
                         <option value="MayorR">Mayor Rating</option>
                         <option value="MenorR">Menor Rating</option>
                     </select>
                 </div>
-                <div >
-                    <button className="botones" type="submit">Guardar</button>
-                    <button className="botones" type="button" onClick={() => onFiltrar(item)}>Filtrar</button>
+                <div className={styles.visto}>
+                    <label htmlFor="visto">
+                        <input
+                            type="checkbox"
+                            name="visto"
+                            checked={item.visto}
+                            onChange={handleChange}
+                        />
+                        Visto
+                    </label>
+                </div>
+                <div className={styles.botonera}>
+                    <button className={styles.botones} type="submit">Guardar</button>
+                    <button className={`${styles.botones} ${styles.filtrar}`} type="button" onClick={() => onFiltrar(item)}>Filtrar</button>
+                    <button className={`${styles.botones} ${styles.limpiar}`}type="button" onClick={onLimpiar}>Limpiar</button>
                 </div>
             </div>
         </form>

@@ -1,0 +1,39 @@
+/*
+.cardPelicula{
+    display: flex;
+    justify-content: left;
+}
+.cardPelicula h2{
+    margin: 2px;
+    margin-right: 5px;
+}
+.nombrePelicula{
+    width: 250px;
+}
+.botones{
+    margin: 2px;
+    height: 20px;
+    margin-top: 3px;
+}
+    */
+.card {
+    padding: 20px 10px;
+    border-radius: 4px;
+    border-left: 0.1px solid var(--gris-claro);
+    border-bottom: 0.1px solid var(--gris-claro);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardContent p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--azul-principal);
+}
+
+.cardActions {
+    display: flex;
+    gap: 10px;
+}

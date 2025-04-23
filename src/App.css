@@ -1,15 +1,57 @@
-.mostadorPeliculas{
-  width: 100%;
-  display: flex;
-  justify-content: left;
-  margin-top: 30px;
+:root {
+  --azul-principal: #3A7CA5;
+  --azul-oscuro: #090e2b;
+  --azul-claro: #DFF2FF;
+  --azul-hover: #539DC2;
+  --azul-activo: #2A5D84;
+  --gris-oscuro: #1F1F1F;
+  --gris-claro: #F4F4F4;
+  --blanco: #ffffff;
+  --texto: var(--gris-oscuro);
 }
-.vistas,.noVistas{
-  background-color: #f9f9f9;
-  border: solid 2px goldenrod;
-  width: 40%;
-  margin-left: 2%;
-  padding-left: 3%;
-  padding-right: 3%;
-  border-radius: 10px;
+
+body {
+  background-color: var(--gris-claro);
+  color: var(--texto);
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.subtituloPrincipal {
+  color: var(--azul-principal);
+  margin: 0 auto 4px;
+  max-width: 860px;
+}
+
+.mostradorPeliculas {
+  max-width: 1000px;
+  width: 100%;
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.vistas, .noVistas {
+  background-color: var(--azul-oscuro);
+  color: var(--blanco);
+  width: 45%;
+  border-radius: 4px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contador {
+  margin: 0;
+  font-size: 14px;
+  color: var(--blanco);
+}
+
+.contador strong {
+  color: #3aa57c;
 }
