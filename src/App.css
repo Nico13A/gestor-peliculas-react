@@ -20,6 +20,7 @@ body {
   margin: 0 auto;
   padding: 1rem;
 }
+<<<<<<< HEAD
 
 .subtituloPrincipal {
   color: var(--azul-principal);
@@ -57,3 +58,5 @@ body {
 .contador strong {
   color: #3aa57c;
 }
+=======
+>>>>>>> f249c42e3e1b74f4321b1337b1b64fe9f9a260ac
