@@ -1,3 +1,15 @@
+Correcciones:
+- Codigo bien estilado, de gran calidad, muy profesional.
+- Buen uso de local storage.
+- Buen uso de useState y useEffect.
+
+Observaciones:
+- Borren imagenes por default que se generan cuando crean el proyecto.
+- Borren codigo comentado antes de entregar.
+
+Nota: 10.
+
+
 # 🎬 Programación Web Avanzada 2025  
 ## Trabajo Práctico N.º 1
 
