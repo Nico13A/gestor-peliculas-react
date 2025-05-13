@@ -2,7 +2,6 @@ Correcciones:
 - Codigo bien estilado, de gran calidad, muy profesional.
 - Buen uso de local storage.
 - Buen uso de useState y useEffect.
-- Buen componente modal.
 
 Observaciones:
 - Borren imagenes por default que se generan cuando crean el proyecto.
