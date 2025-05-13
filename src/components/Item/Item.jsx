@@ -6,6 +6,7 @@ const Item = ({ item, onEditar, onEliminar }) => {
     <div className={styles.card}>
       <div className={styles.cardContent}>
         <p>{item.titulo}</p>
+        {/* Borrar codigo comentado */}
         {/*<p><strong>Director:</strong> {item.director}</p>
         <p><strong>Año:</strong> {item.anio}</p>
         <p><strong>Género:</strong> {item.genero}</p>
